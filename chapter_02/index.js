@@ -35,39 +35,40 @@ console.log(user)
 console.log('--------------------------------------------')
 
 // Class 04 and 05
-// process.stdout.write('Hello \n\n')
+process.stdout.write('Hello \n\n')
 
-// const questions = [
-//   "What's your name?",
-//   'What would you rather be doing?',
-//   "what's your preffered programming language?",
-// ]
+const questions = [
+  "What's your name?",
+  'What would you rather be doing?',
+  "what's your preffered programming language?",
+]
 
-// const answers = []
+const answers = []
 
-// function ask(i = 0) {
-//   process.stdout.write(`\n\n\n ${questions[i]}`)
-//   process.stdout.write(' > ')
-// }
+function ask(i = 0) {
+  process.stdout.write(`\n\n\n ${questions[i]}`)
+  process.stdout.write(' > ')
+}
 
-// ask()
+ask()
 
-// process.stdin.on('data', (data) => {
-//   answers.push(data.toString().trim())
+process.stdin.on('data', (data) => {
+  answers.push(data.toString().trim())
 
-//   if (answers.length < questions.length) {
-//     ask(answers.length)
-//   } else {
-//     process.exit()
-//   }
-// })
+  if (answers.length < questions.length) {
+    ask(answers.length)
+  } else {
+    process.exit()
+  }
+})
 
-// process.on('exit', () => {
-//   process.stdout.write('\n\n\n\n')
-//   process.stdout.write(
-//     `Go ${answers[1]} ${answers[0]} you can finish writing ${answers[2]} later, enjoy your life!`
-//   )
-// })
+process.on('exit', () => {
+  process.stdout.write('\n\n\n\n')
+  process.stdout.write(
+    `Go ${answers[1]} ${answers[0]} you can finish writing ${answers[2]} later, enjoy your life!`
+  )
+})
+
 console.log('--------------------------------------------')
 
 // Class 06, 07 and 08
