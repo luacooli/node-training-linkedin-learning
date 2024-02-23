@@ -15,39 +15,21 @@
 // console.log('--------------------------------------------')
 
 // // Class 02 and 03
-// const readline = require('readline')
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout,
-// })
+const collectAnswers = require('./lib/collectAnswers')
 
-// const questions = [
-//   "What's your name?",
-//   'Where do you live?',
-//   'What are you going to do with Node.js?',
-// ]
+const questions = [
+  "What's your name?",
+  'Where do you live?',
+  'What are you going to do with Node.js?',
+]
 
-// function collectAnswers(questions, done) {
-//   const answers = []
+const answerEvent = collectAnswers(questions, (answers) => {
+  console.log(`Thank you for your answer!`)
+  console.log(answers)
+  process.exit()
+})
 
-//   const questionAnswers = (answer) => {
-//     answers.push(answer.trim())
-
-//     if (answers.length < questions.length) {
-//       rl.question(questions[answers.length], questionAnswers)
-//     } else {
-//       return done(answers)
-//     }
-//   }
-
-//   rl.question(questions[0], questionAnswers)
-// }
-
-// collectAnswers(questions, (answers) => {
-//   console.log(`Thank you for your answer!`)
-//   console.log(answers)
-//   process.exit()
-// })
+answerEvent.on('answer', (answer) => console.log(`The answer is ${answer}`))
 
 // // Class 04
 // const myModule = require('./myModule')
@@ -61,24 +43,24 @@
 // console.log(`the count is ${myModule.getCount()}`)
 
 // Class 05
-const events = require('events')
+// const events = require('events')
 
-let emitter = new events.EventEmitter()
+// let emitter = new events.EventEmitter()
 
-emitter.on('customEvent', (message, user) => {
-  console.log(`${user}: ${message}`)
-})
+// emitter.on('customEvent', (message, user) => {
+//   console.log(`${user}: ${message}`)
+// })
 
-emitter.emit('customEvent', 'Hello World!', 'Computer')
-emitter.emit('customEvent', "That's pretty cool", 'Lua')
+// emitter.emit('customEvent', 'Hello World!', 'Computer')
+// emitter.emit('customEvent', "That's pretty cool", 'Lua')
 
-process.stdin.on('data', (data) => {
-  const input = data.toString().trim()
+// process.stdin.on('data', (data) => {
+//   const input = data.toString().trim()
 
-  if (input === 'exit') {
-    emitter.emit('customEvent', 'Good bye', 'preocess')
-    process.exit()
-  }
+//   if (input === 'exit') {
+//     emitter.emit('customEvent', 'Good bye', 'preocess')
+//     process.exit()
+//   }
 
-  emitter.emit('customEvent', data.toString().trim(), 'Terminal')
-})
+//   emitter.emit('customEvent', data.toString().trim(), 'Terminal')
+// })
